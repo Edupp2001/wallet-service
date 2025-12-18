@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"wallet-service/internal/model"
+
 	"github.com/google/uuid"
 )
 
@@ -55,8 +57,11 @@ func (h *Handler) GetWallet(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	json.NewEncoder(w).Encode(map[string]interface{}{
-		"walletId": id,
-		"balance":  balance,
-	})
+	wallet := model.Wallet{
+		ID:      id,
+		Balance: balance,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(wallet)
 }

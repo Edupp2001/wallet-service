@@ -60,3 +60,12 @@ func (r *WalletRepo) GetBalance(ctx context.Context, id uuid.UUID) (int64, error
 	}
 	return balance, err
 }
+
+func (r *WalletRepo) CreateWallet(ctx context.Context, id uuid.UUID) error {
+	_, err := r.db.ExecContext(
+		ctx,
+		"INSERT INTO wallets (id, balance) VALUES ($1, 0)",
+		id,
+	)
+	return err
+}

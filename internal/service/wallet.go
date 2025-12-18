@@ -9,6 +9,7 @@ import (
 type Repository interface {
 	UpdateBalance(ctx context.Context, id uuid.UUID, delta int64) error
 	GetBalance(ctx context.Context, id uuid.UUID) (int64, error)
+	CreateWallet(ctx context.Context, id uuid.UUID) error
 }
 
 type WalletService struct {
