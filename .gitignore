@@ -1,0 +1,15 @@
+# binaries
+/bin/
+/dist/
+
+# env
+config.env
+
+# go
+*.exe
+*.test
+*.out
+
+# IDE
+.vscode/
+.idea/
